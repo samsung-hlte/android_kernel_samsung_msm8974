@@ -219,8 +219,11 @@ struct wacom_g5_callbacks {
 	int (*check_prox)(struct wacom_g5_callbacks *);
 };
 
-#define LONG_PRESS_TIME 500
-#define MIN_GEST_DIST 384
+#define SHORT_PRESS_TIME 0
+#define SHORT_PRESS_DOUBLED 200
+#define BREAK_TIME 200
+#define LONG_PRESS_TIME 1000
+#define MIN_GEST_DIST 3000
 
 /*Parameters for i2c driver*/
 struct wacom_i2c {
@@ -315,7 +318,7 @@ struct wacom_i2c {
 	int gesture_start_x;
 	int gesture_start_y;
 	ktime_t gesture_start_time;
-
+	ktime_t gesture_old_end_time;
 #ifdef CONFIG_FB
 	struct notifier_block fb_notif;
 	bool fb_disabled;

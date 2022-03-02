@@ -294,7 +294,7 @@ static void wacom_i2c_set_input_values(struct i2c_client *client,
 	input_dev->id.bustype = BUS_I2C;
 	input_dev->dev.parent = &client->dev;
 	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
-
+	input_set_capability(input_dev, EV_KEY, KEY_BACK);
 #ifdef WACOM_PEN_DETECT
 	input_dev->open = wacom_i2c_input_open;
 	input_dev->close = wacom_i2c_input_close;
@@ -315,6 +315,7 @@ static void wacom_i2c_set_input_values(struct i2c_client *client,
 	__set_bit(KEY_PEN_RTL, input_dev->keybit);
 	__set_bit(KEY_PEN_LTR, input_dev->keybit);
 	__set_bit(KEY_PEN_LP, input_dev->keybit);
+	__set_bit(KEY_PEN_SP, input_dev->keybit);
 #ifdef WACOM_USE_GAIN
 	__set_bit(ABS_DISTANCE, input_dev->absbit);
 #endif

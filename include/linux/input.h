@@ -829,6 +829,7 @@ struct input_keymap_entry {
 #define KEY_PEN_RTL			0x2f3
 #define KEY_PEN_LTR			0x2f4
 #define KEY_PEN_LP			0x2f5
+#define KEY_PEN_SP          0x2f6
 
 /* We avoid low common keys in module aliases so they don't get huge. */
 #define KEY_MIN_INTERESTING	KEY_MUTE
